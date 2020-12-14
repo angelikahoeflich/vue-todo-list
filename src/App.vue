@@ -1,41 +1,55 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to your Todo List (made with Vue)"/>
     <Todos v-bind:todos="todos"/>
+    <AddTodo v-on:add-todo="addTodo"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
 import Todos from './components/Todos';
-
+import AddTodo from './components/AddTodo';
 export default {
-  name: 'App',
+  name: 'app',
   components: {
-    HelloWorld,
-    Todos
+    Todos,
+    AddTodo
   },
-  data(){
-  return {
-    todos: [
-      {
-      id:1,
-      title: 'Workout',
-      completed: false
-      },
-      {
-      id:1,
-      title: 'Eat ',
-      completed: false
-      },
-      {
-      id:1,
-      title: 'Take shower',
-      completed: false
-      }
-    ]
-  }}
+  data() {
+    return {
+      todos: [
+        {
+          id: 1,
+          title: 'Go workout',
+          completed: false
+        },
+        {
+          id: 2,
+          title: 'Do laundry',
+          completed: false
+        },
+        {
+          id: 3,
+          title: 'Cook food',
+          completed: false
+        },
+        {
+          id: 4,
+          title: 'Clean up room',
+          completed: false
+        },
+        {
+          i: 5,
+          title: 'Finish work',
+          completed: false
+        }
+      ],
+    }
+  },
+  methods: {
+    addTodo(newTodoObj) {
+      this.todos = [...this.todos, newTodoObj];
+    }
+  }
 }
 </script>
 
