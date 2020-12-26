@@ -1,10 +1,9 @@
 <template>
   <div id="app">
-    <Todos v-bind:todos="todos"/>
+    <Todos v-bind:todos="todos" v-on:delete-todo="deleteTodo"/>
     <AddTodo v-on:add-todo="addTodo"/>
   </div>
 </template>
-
 <script>
 import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
@@ -48,18 +47,12 @@ export default {
   methods: {
     addTodo(newTodoObj) {
       this.todos = [...this.todos, newTodoObj];
+    },
+    deleteTodo(todoId) {
+      this.todos = this.todos.filter(todo => todo.id !== todoId);
     }
   }
 }
 </script>
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>

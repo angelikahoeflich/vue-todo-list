@@ -7,7 +7,10 @@
   </div>
 </template>
 <script>
-import uuid from 'uuid';
+
+import {v4} from 'uuid';
+const uuId = v4()
+
 export default {
   name: 'AddTodo',
   data() {
